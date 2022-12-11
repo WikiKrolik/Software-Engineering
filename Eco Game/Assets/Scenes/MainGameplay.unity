@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 22910388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1487334599}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: LoadPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &22910388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,13 +440,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1487334593}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1487334599}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SavePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -799,7 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36b3b22dba9e244d83763e407a6400f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 150
 --- !u!50 &1487334595
 Rigidbody2D:
   serializedVersion: 4
