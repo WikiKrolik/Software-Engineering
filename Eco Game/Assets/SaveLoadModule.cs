@@ -6,11 +6,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveLoadModule
 {
-    public static void SaveGame(Player player)
+    public static void SavePlayer(Player player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         // where to save file
-        string path = Application.persistentDataPath + "/player.fun"; //we can you any file type we want (.fun is just because I have to write sth)
+        string path = Application.persistentDataPath + "/player.dat";
         FileStream stream = new FileStream(path, FileMode.Create);
         GameData data = new GameData(player);
 
@@ -18,9 +18,9 @@ public static class SaveLoadModule
         stream.Close();
     }
 
-    public static GameData LoadGame()
+    public static GameData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "/player.fun";
+        string path = Application.persistentDataPath + "/player.dat";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

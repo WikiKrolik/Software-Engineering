@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int level = 5;
-    public int health = 50;
 
     public void SavePlayer()
     {
-        SaveLoadModule.SaveGame(this);
+        SaveLoadModule.SavePlayer(this);
     }
 
     public void LoadPlayer()
     {
-        GameData data = SaveLoadModule.LoadGame();
+        GameData data = SaveLoadModule.LoadPlayer();
 
-        level = data.level;
-        health = data.health;
         Vector3 position;
         position.x = data.position[0];
         position.y = data.position[1];
