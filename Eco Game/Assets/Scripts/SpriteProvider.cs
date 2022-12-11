@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#nullable enable
+
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -17,9 +19,10 @@ namespace Assets.Scripts
         // Update is called once per frame
         void Update()
         {
-            if (gameObject.name == "PlayerController")
+            Analyzer analyzer= GetComponent<Analyzer>();
+            if (analyzer is not null)
             {
-                spriteRenderer.sprite = null;
+                spriteRenderer.sprite = analyzer.AnalyzeDirection();
             }
         }
     }
