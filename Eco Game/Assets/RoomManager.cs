@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-using System.Diagnostics.Contracts;
 
-public class Room : MonoBehaviourPunCallbacks
+public class RoomManager : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
-    
+
     public void CreateRoom()
     {
         PhotonNetwork.CreateRoom(createInput.text);
@@ -17,13 +16,11 @@ public class Room : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        PhotonNetwork.CreateRoom(joinInput.text);
+        PhotonNetwork.JoinRoom(joinInput.text);
     }
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("Game");
+        PhotonNetwork.LoadLevel("NetworkingScene");
     }
 }
-
-   
