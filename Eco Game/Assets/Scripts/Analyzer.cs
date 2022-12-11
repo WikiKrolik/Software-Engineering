@@ -9,7 +9,7 @@ public class Analyzer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject = getAnimation<GameObject>();
+        //gameObject = getAnimation<GameObject>();
     }
 
     // Update is called once per frame

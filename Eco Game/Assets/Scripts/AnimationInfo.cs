@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class AnimationInfo : MonoBehaviour
 {
-    private objecttype= typeof(object);
+    //private objecttype = typeof(object);
+
     // Start is called before the first frame update
     void Start()
     {
-        gameObject = getAnimation();
+        //gameObject = getAnimation();
     }
 
     // Update is called once per frame
