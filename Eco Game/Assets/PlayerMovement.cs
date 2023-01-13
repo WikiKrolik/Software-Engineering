@@ -1,34 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject playerPrefab;
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
+    PhotonView view;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    private void Start()
+    {
+        view = GetComponent<PhotonView>();
+    }
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        if(Input.GetButtonDown("Jump") && IsGrounded())
+        if(view.IsMine)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
+            horizontal = Input.GetAxisRaw("Horizontal");
+            if (Input.GetButtonDown("Jump") && IsGrounded())
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            }
 
-        if(Input.GetButtonUp("Jump") && rb.velocity.x > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            if (Input.GetButtonUp("Jump") && rb.velocity.x > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+            Flip();
         }
-
-        Flip();
     }
 
     private void FixedUpdate()
