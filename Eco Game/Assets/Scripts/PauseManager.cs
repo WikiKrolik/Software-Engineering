@@ -11,6 +11,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject _pauseMenu;
     private void Pause()
     {
+        _paused = true;
         Time.timeScale = 0;
         _pauseMenu.SetActive(true);
        // Managers.GameManager.LoadScene(Managers.GameManager.Scene.Pause);
@@ -23,12 +24,12 @@ public class PauseManager : MonoBehaviour
             if (_paused == true)
             {
                 Rerun();
-                _paused = false;
+                
             }
             else
             {
                 Pause();
-                _paused = true;
+                
             }
         }
 
@@ -37,13 +38,14 @@ public class PauseManager : MonoBehaviour
 
     public void Rerun()
     {
+        _paused = false;
         Time.timeScale = 1;
         _pauseMenu.SetActive(false);
     }
 
     public void ReturnToMenu()
     {
-        SceneManager.UnloadSceneAsync("PauseMenu");
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.LoadSceneAsync("MainMenu");
     }
 }
