@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
 {
     public static UIController instance;
 
-    public Button _taskButton;
+    public Button _minigameButton;
     public Interactable currentTask;
     public bool taskAvailable;
 
@@ -20,12 +20,12 @@ public class UIController : MonoBehaviour
     void Update()
     {
         taskAvailable = currentTask != null;
-        _taskButton.interactable = taskAvailable;
+        _minigameButton.interactable = taskAvailable;
 
         if (currentTask && currentTask._isActive) {
-            _taskButton.GetComponentInChildren<TMP_Text>().text = "Quit Minigame";
+            _minigameButton.GetComponentInChildren<TMP_Text>().text = "Quit Minigame";
         } else {
-            _taskButton.GetComponentInChildren<TMP_Text>().text = "Enter Minigame";
+            _minigameButton.GetComponentInChildren<TMP_Text>().text = "Enter Minigame";
         }
 
         
