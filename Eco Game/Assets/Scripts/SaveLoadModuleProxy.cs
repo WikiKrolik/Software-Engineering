@@ -7,12 +7,12 @@ public class SaveLoadModuleProxy : MonoBehaviour
     // Start is called before the first frame update
     public void Save()
     {
-        SaveLoadModule.SavePlayer();    
+        SaveLoadModule.SaveGameState();    
         }
 
     // Update is called once per frame
     public void Load()
     {
-        SaveLoadModule.LoadPlayer();
+        SaveLoadModule.LoadGameState();
     }
 }

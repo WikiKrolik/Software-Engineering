@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-[System.Serializable]
+[Serializable]
 public class GameData
 {
-    public float[] position;
+    public float[] PlayerPosition = new float[3];
 
-    public static GameData gamedata;
+    public static GameData Instance { get; set; } = new();
 
-    public static void setPlayerData(Player player)
+    public static void SetPlayerData(Player player)
     {
-        gamedata.position = new float[3];
-        gamedata.position[0] = player.transform.position.x;
-        gamedata.position[1] = player.transform.position.y;
-        gamedata.position[2] = player.transform.position.z;
+        var pos = player.transform.position;
+        Instance.PlayerPosition = new float[] { pos.x, pos.y, pos.z };
+    }
+
+    public static void Reset()
+    {
+        Instance = new();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Player() 
+    public void Start() 
     {
         LoadPlayer();
     }
@@ -12,18 +12,19 @@ public class Player : MonoBehaviour
     public void SavePlayer()
     {   
 
-        GameData.setPlayerData(this);
-        SaveLoadModule.SavePlayer();
+        GameData.SetPlayerData(this);
+        SaveLoadModule.SaveGameState();
     }
 
     public void LoadPlayer()
     {
-        SaveLoadModule.LoadPlayer();
-
         Vector3 position;
-        position.x = GameData.gamedata.position[0];
-        position.y = GameData.gamedata.position[1];
-        position.z = GameData.gamedata.position[2];
+        float[] savedPosition = GameData.Instance.PlayerPosition;
+        for (int i = 0; i < 3; i++)
+        {
+            position[i] = savedPosition[i];
+        }
         transform.position = position;
+        Debug.Log($"Setting player position to {position}");
     }
 }

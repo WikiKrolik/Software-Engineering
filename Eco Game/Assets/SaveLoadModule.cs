@@ -1,40 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveLoadModule
 {
-    public static void SavePlayer()
+    private static string SaveFilePath => Application.persistentDataPath + "/player.dat";
+
+    public static void SaveGameState()
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        // where to save file
-        string path = Application.persistentDataPath + "/player.dat";
-        FileStream stream = new FileStream(path, FileMode.Create);
-        GameData data = GameData.gamedata;
+        using FileStream stream = new(SaveFilePath, FileMode.Create);
+
+        BinaryFormatter formatter = new();
+        GameData data = GameData.Instance;
 
         formatter.Serialize(stream, data);
-        stream.Close();
     }
 
-    public static void LoadPlayer()
+    public static void LoadGameState()
     {
 
-        string path = Application.persistentDataPath + "/player.dat";
-        if (File.Exists(path))
+        if (File.Exists(SaveFilePath))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            using FileStream stream = new(SaveFilePath, FileMode.Open);
 
+            BinaryFormatter formatter = new();
             GameData data = formatter.Deserialize(stream) as GameData;
-            stream.Close();
 
-            GameData.gamedata =  data;
+            GameData.Instance =  data;
         } else
         {
-            Debug.LogError("File not found at " + path);
-            
+            Debug.LogError($"File not found at {SaveFilePath}");
         }
     }
 }
