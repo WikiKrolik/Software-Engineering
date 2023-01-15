@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ResolutionManager : MonoBehaviour
@@ -11,8 +12,7 @@ public class ResolutionManager : MonoBehaviour
     {
 #if UNITY_EDITOR
         _resolutions = Screen.resolutions; // this causes one resolution to be added multiple times in build
-#endif
-#if !UNITY_EDITOR
+#else
         _resolutions = Screen.resolutions.Where(resolution => resolution.refreshRate == 60).ToArray();
 #endif
 
