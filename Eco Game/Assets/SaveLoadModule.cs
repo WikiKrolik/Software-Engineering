@@ -8,6 +8,7 @@ public static class SaveLoadModule
 
     public static void SaveGameState()
     {
+        Debug.Log($"Saving game state to file {SaveFilePath}");
         using FileStream stream = new(SaveFilePath, FileMode.Create);
 
         BinaryFormatter formatter = new();
@@ -21,6 +22,7 @@ public static class SaveLoadModule
 
         if (File.Exists(SaveFilePath))
         {
+            Debug.Log($"Loading game state from file {SaveFilePath}");
             using FileStream stream = new(SaveFilePath, FileMode.Open);
 
             BinaryFormatter formatter = new();

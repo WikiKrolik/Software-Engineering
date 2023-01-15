@@ -10,13 +10,17 @@ public class MainMenuManager : MonoBehaviour
         StartGame();
     }
 
-    public void OnLoadButonClick(int level)
+    public void OnLoadButonClick()
     {
         SaveLoadModule.LoadGameState();
         StartGame();
     }
 
-    private void StartGame() => SceneManager.LoadScene(_playSceneName, LoadSceneMode.Single);
+    private void StartGame()
+    {
+        Debug.Log("Starting main scene");
+        SceneManager.LoadSceneAsync(_playSceneName, LoadSceneMode.Single);
+    }
 
     public void OnExitButtonClick()
     {
