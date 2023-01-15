@@ -8,10 +8,7 @@ public class Move : MonoBehaviour
 	Vector2 velocity;
 	Rigidbody2D rb;
 
-    public Move()
-    {
-
-    }
+    public Move() {}
 
     private void Awake()
 	{

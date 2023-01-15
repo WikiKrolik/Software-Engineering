@@ -8,11 +8,21 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private string _playSceneName;
     public void OnPlayButtonClick()
     {
-        SceneManager.LoadSceneAsync(_playSceneName, LoadSceneMode.Single);
+        GameData.Reset();
+        StartGame();
     }
 
+    private void StartGame()
+    {
+        SceneManager.LoadSceneAsync(_playSceneName, LoadSceneMode.Single);
+    }
     public void OnExitButtonClick()
     {
         Application.Quit();
+    }
+    public void OnLoadButtonClick()
+    {
+        SaveLoadModule.LoadPlayer();
+        StartGame();
     }
 }

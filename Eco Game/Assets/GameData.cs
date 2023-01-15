@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 [System.Serializable]
@@ -7,7 +8,13 @@ public class GameData
 {
     public float[] position;
 
-    public static GameData gamedata;
+    public static GameData gamedata = new GameData();
+
+    public static void Reset()
+    {
+        gamedata.position = new float [] {0,0,0};
+        Debug.Log("Gamedata reset");
+    }
 
     public static void setPlayerData(Player player)
     {
