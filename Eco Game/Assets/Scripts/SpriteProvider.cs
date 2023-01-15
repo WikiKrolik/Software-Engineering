@@ -1,14 +1,11 @@
-﻿#nullable enable
-
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class SpriteProvider : MonoBehaviour
     {
 
-        private SpriteRenderer spriteRenderer;
+        private SpriteRenderer spriteRenderer = default!;
 
         // Use this for initialization
         void Start()

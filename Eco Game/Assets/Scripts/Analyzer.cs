@@ -25,19 +25,19 @@ public class Analyzer : MonoBehaviour
         Sprite arrow = Resources.Load<Sprite>("amogus"); ;
         if (move != null)
         {
-            if (move.getDirection() == "up")
+            if (move.GetDirection() == "up")
             {
                 arrow = Resources.Load<Sprite>("uparrow");
             }
-            if (move.getDirection() == "down")
+            if (move.GetDirection() == "down")
             {
                 arrow = Resources.Load<Sprite>("downarrow");
             }
-            if (move.getDirection() == "right")
+            if (move.GetDirection() == "right")
             {
                 arrow = Resources.Load<Sprite>("rightarrow");
             }
-            if (move.getDirection() == "left")
+            if (move.GetDirection() == "left")
             {
                 arrow = Resources.Load<Sprite>("leftarrow");
             }

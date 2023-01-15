@@ -6,7 +6,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private string _playSceneName;
     public void OnPlayButtonClick()
     {
-        GameData.Reset()
+        GameData.Reset();
         StartGame();
     }
 
@@ -16,7 +16,7 @@ public class MainMenuManager : MonoBehaviour
         StartGame();
     }
 
-    private void StartGame() => SceneManager.LoadSceneAsync(_playSceneName, LoadSceneMode.Single);
+    private void StartGame() => SceneManager.LoadScene(_playSceneName, LoadSceneMode.Single);
 
     public void OnExitButtonClick()
     {

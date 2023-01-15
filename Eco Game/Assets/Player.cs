@@ -11,14 +11,13 @@ public class Player : MonoBehaviour
 
     public void SavePlayer()
     {   
-
         GameData.SetPlayerData(this);
         SaveLoadModule.SaveGameState();
     }
 
     public void LoadPlayer()
     {
-        Vector3 position;
+        Vector3 position = Vector3.zero;
         float[] savedPosition = GameData.Instance.PlayerPosition;
         for (int i = 0; i < 3; i++)
         {

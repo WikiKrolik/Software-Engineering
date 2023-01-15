@@ -1,21 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 public class Move : MonoBehaviour
 {
 	public float speed = 15;
 
-	Vector2 velocity;
-	Rigidbody2D rb;
-
-    public Move()
-    {
-
-    }
+	public Vector2 velocity = Vector2.zero;
+	Rigidbody2D rb = default!;
 
     private void Awake()
 	{
-		rb = GetComponent<Rigidbody2D>(); velocity = Vector2.zero;
+		rb = GetComponent<Rigidbody2D>(); 
 	}
 	private void Update()
 	{
@@ -25,18 +19,15 @@ public class Move : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		rb.MovePosition(rb.position + velocity * speed * Time.fixedDeltaTime);
+		rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * velocity);
 	}
 
-	public string getDirection()
+	public string GetDirection()
 	{
-		float velx = velocity.x = Input.GetAxisRaw("Horizontal");
-		float vely = velocity.y = Input.GetAxisRaw("Vertical");
-
-		if (velx < 0) return "left";
-		else if (velx > 0) return "right";
-		else if (vely > 0) return "up";
-		else if (vely < 0) return "down";
+		if (velocity.x < 0) return "left";
+		else if (velocity.x > 0) return "right";
+		else if (velocity.y > 0) return "up";
+		else if (velocity.y < 0) return "down";
 		else return "stop";
     }
 }
