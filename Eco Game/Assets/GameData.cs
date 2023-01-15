@@ -7,11 +7,13 @@ public class GameData
 {
     public float[] position;
 
-    public GameData(Player player)
+    public static GameData gamedata;
+
+    public static void setPlayerData(Player player)
     {
-        position = new float[3];
-        position[0] = player.transform.position.x;
-        position[1] = player.transform.position.y;
-        position[2] = player.transform.position.z;
+        gamedata.position = new float[3];
+        gamedata.position[0] = player.transform.position.x;
+        gamedata.position[1] = player.transform.position.y;
+        gamedata.position[2] = player.transform.position.z;
     }
 }

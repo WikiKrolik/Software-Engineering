@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Player() 
+    {
+        LoadPlayer();
+    }
 
     public void SavePlayer()
-    {
-        SaveLoadModule.SavePlayer(this);
+    {   
+
+        GameData.setPlayerData(this);
+        SaveLoadModule.SavePlayer();
     }
 
     public void LoadPlayer()
     {
-        GameData data = SaveLoadModule.LoadPlayer();
+        SaveLoadModule.LoadPlayer();
 
         Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
+        position.x = GameData.gamedata.position[0];
+        position.y = GameData.gamedata.position[1];
+        position.z = GameData.gamedata.position[2];
         transform.position = position;
     }
 }
