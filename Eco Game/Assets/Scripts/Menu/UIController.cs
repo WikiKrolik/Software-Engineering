@@ -13,7 +13,7 @@ public class UIController : MonoBehaviour
     public Button _minigameButton;
     public Interactable currentTask;
     public bool taskAvailable;
-    public string playSceneName;
+    [SerializeField] public string playSceneName;
 
     void Start()
     {
