@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UIController : MonoBehaviour
 {
@@ -19,16 +20,23 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        taskAvailable = currentTask != null;
-        _minigameButton.interactable = taskAvailable;
+        try
+        {
+            taskAvailable = currentTask != null;
+            _minigameButton.interactable = taskAvailable;
 
-        if (currentTask && currentTask._isActive) {
-            _minigameButton.GetComponentInChildren<TMP_Text>().text = "Quit Minigame";
-        } else {
-            _minigameButton.GetComponentInChildren<TMP_Text>().text = "Enter Minigame";
+            if (currentTask && currentTask._isActive)
+            {
+                _minigameButton.GetComponentInChildren<TMP_Text>().text = "Quit Minigame";
+            }
+            else
+            {
+                _minigameButton.GetComponentInChildren<TMP_Text>().text = "Enter Minigame";
+            }
+        } catch (NullReferenceException)
+        {
+            // ignore
         }
-
-        
     }
 
     public void OnEnterMinigameButtonPressed() {
