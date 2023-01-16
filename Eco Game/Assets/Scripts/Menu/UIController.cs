@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIController : MonoBehaviour
     public Button _minigameButton;
     public Interactable currentTask;
     public bool taskAvailable;
+    public string playSceneName;
 
     void Start()
     {
@@ -44,6 +46,6 @@ public class UIController : MonoBehaviour
             return;
         }
 
-        currentTask.Use(!currentTask._isActive);
+        SceneManager.LoadSceneAsync(playSceneName, LoadSceneMode.Single);
     }
 }

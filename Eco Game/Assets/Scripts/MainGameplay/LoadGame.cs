@@ -20,6 +20,10 @@ namespace Assets.Scripts
             {
                 SceneManager.LoadScene(sceneName,LoadSceneMode.Additive);
             }
+            if (Input.GetKeyDown(KeyCode.N)) 
+            {
+                SceneManager.LoadScene(sceneName,LoadSceneMode.Single);
+            }
         }
     }
 }
