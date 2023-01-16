@@ -1,8 +1,10 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class Move : MonoBehaviour
 {
 	public float speed = 15;
+	public PhotonView view = default!;
 
 	public Vector2 velocity = Vector2.zero;
 	Rigidbody2D rb = default!;
@@ -11,15 +13,27 @@ public class Move : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>(); 
 	}
-	private void Update()
+
+    private void Start()
+    {
+		view = GetComponent<PhotonView>();
+    }
+
+    private void Update()
 	{
-		velocity.x = Input.GetAxisRaw("Horizontal");
-		velocity.y = Input.GetAxisRaw("Vertical");
+		if (view.IsMine)
+		{
+            velocity.x = Input.GetAxisRaw("Horizontal");
+            velocity.y = Input.GetAxisRaw("Vertical");
+        }
 	}
 
 	private void FixedUpdate()
 	{
-		rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * velocity);
+		if (view.IsMine)
+		{
+            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * velocity);
+        }
 	}
 
 	public string GetDirection()
