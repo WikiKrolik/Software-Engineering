@@ -9,14 +9,10 @@ public class Move : MonoBehaviour
 	public Vector2 velocity = Vector2.zero;
 	Rigidbody2D rb = default!;
 
-    private void Awake()
-	{
-		rb = GetComponent<Rigidbody2D>(); 
-	}
-
     private void Start()
-    {
-		view = GetComponent<PhotonView>();
+	{
+		rb = GetComponent<Rigidbody2D>();
+        view = GetComponent<PhotonView>();
     }
 
     private void Update()
